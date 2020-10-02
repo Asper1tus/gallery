@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery/fullImagePage.dart';
 import 'package:http/http.dart' as http;
 
 import 'image.dart';
@@ -76,10 +77,16 @@ class UnsplashImagesList extends StatelessWidget {
     return ListView.builder(
       itemCount: images.length,
       itemBuilder: (context, index) => ListTile(
-        leading: Image.network(images[index].thumbnailUrl),
-        title: Text(images[index].name),
-        subtitle: Text(images[index].author),
-      ),
+          leading: Image.network(images[index].thumbnailUrl),
+          title: Text(images[index].name),
+          subtitle: Text(images[index].author),
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => FullImagePage(
+                        title: images[index].name,
+                        fullUrl: images[index].fullUrl,
+                      )))),
     );
   }
 }
