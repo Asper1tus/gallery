@@ -10,8 +10,8 @@ class UnsplashImage {
     return UnsplashImage(
       name: json['id'] as String,
       author: json['user']['name'] as String,
-      thumbnailUrl: json['urls']['regular'] as String,
-      regularUrl: json['urls']['full'] as String,
+      thumbnailUrl: json['urls']['thumb'] as String,
+      regularUrl: json['urls']['regular'] as String,
     );
   }
 }
